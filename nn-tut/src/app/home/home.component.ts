@@ -8,12 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   homeTitle = "Welcome to the homepage...";
-  myString = "Sky is blue";
-  myBoolean = true;
-
-  alertMe(val){
-    alert(val);
-  }
+  ninja = {
+    name: "Yoshi",
+    belt: "Black"
+  };
 
   constructor() { }
 
