@@ -13,8 +13,4 @@ export class AuthorsService {
     return this.authors;
   }
 
-  getAuthorsCount() {
-    return this.authors.length;
-  }
-
 }
