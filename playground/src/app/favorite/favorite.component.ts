@@ -5,20 +5,19 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'favorite',
   template: `
-    <fa-icon (click)=onStarClick() [icon]="faStar"></fa-icon>
+    <fa-icon (click)=onStarClick() [icon]="isFavorite ? fasStar : farStar"></fa-icon>
   `
 })
 export class FavoriteComponent implements OnInit {
 
-  faStar = farStar;
+  isFavorite = false;
+  fasStar = fasStar;
+  farStar = farStar;
 
   constructor() { }
 
   onStarClick() {
-    this.faStar === farStar ?
-      this.faStar = fasStar // turn on solid (fav)
-      :
-      this.faStar = farStar; // turn on regular (non-fav)
+    this.isFavorite ? this.isFavorite = false : this.isFavorite = true;
   }
 
   ngOnInit() {
