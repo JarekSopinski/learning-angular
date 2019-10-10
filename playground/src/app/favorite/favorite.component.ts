@@ -10,14 +10,14 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 })
 export class FavoriteComponent implements OnInit {
 
-  isFavorite = false;
+  isFavorite: boolean;
   fasStar = fasStar;
   farStar = farStar;
 
   constructor() { }
 
   onStarClick() {
-    this.isFavorite ? this.isFavorite = false : this.isFavorite = true;
+    this.isFavorite = !this.isFavorite;
   }
 
   ngOnInit() {
