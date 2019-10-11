@@ -8,19 +8,23 @@ import { CoursesService } from './services/courses.service';
 import { AuthorsService } from './services/authors.service';
 
 import { SummaryPipe } from './pipes/summary.pipe';
+import { FormatTitle } from './pipes/format-title.pipe';
 
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
+import { MovieTitleComponent } from './components/movie-title/movie-title.component';
 
 @NgModule({
   declarations: [
+    SummaryPipe,
+    FormatTitle,
     AppComponent,
     CoursesComponent,
     AuthorsComponent,
-    SummaryPipe,
-    FavoriteComponent
+    FavoriteComponent,
+    MovieTitleComponent
   ],
   imports: [
     BrowserModule,
