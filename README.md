@@ -1,4 +1,6 @@
-# Playground
+# Learning Angular
+
+## Just a simple playground for various Angular exercises.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 
