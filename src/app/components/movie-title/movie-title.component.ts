@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieTitleComponent implements OnInit {
 
-  title: string = 'THE RISE OF THE PLANET OF THE APES';
+  title: string;
 
   constructor() { }
 

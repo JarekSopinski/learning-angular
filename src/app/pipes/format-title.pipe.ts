@@ -6,6 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class FormatTitle implements PipeTransform {
 
+    prepositions:string[] = ['the', 'of'];
+
     transform(value:string, args?:any) {
         if (!value)
             return null;
@@ -17,7 +19,7 @@ export class FormatTitle implements PipeTransform {
 
                 const word:string = words[i];
 
-                if ( (word === 'the' || word === 'of') && i > 0 ) {
+                if ( this.prepositions.includes(word) && i > 0 ) {
                     result.push(word);
                 } else {
                     result.push(word.charAt(0).toUpperCase() + word.slice(1));
