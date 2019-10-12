@@ -6,11 +6,26 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class FormatTitle implements PipeTransform {
 
-    transform(value: string, args?: any) {
+    transform(value:string, args?:any) {
         if (!value)
             return null;
 
-        return value.toLowerCase(); // initial test with simple lowercase
+            let result:string[] = [];
+            const words:string[] = value.toLowerCase().split(' ');
+            
+            for (let i=0; i < words.length; i++){
+
+                const word:string = words[i];
+
+                if ( (word === 'the' || word === 'of') && i > 0 ) {
+                    result.push(word);
+                } else {
+                    result.push(word.charAt(0).toUpperCase() + word.slice(1));
+                }
+
+            }
+
+        return result.join(' ');
     }
 
 }
