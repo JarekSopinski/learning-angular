@@ -15,6 +15,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { MovieTitleComponent } from './components/movie-title/movie-title.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MovieTitleComponent } from './components/movie-title/movie-title.compon
     CoursesComponent,
     AuthorsComponent,
     FavoriteComponent,
-    MovieTitleComponent
+    MovieTitleComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
