@@ -5,12 +5,12 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'favorite',
   template: `
-    <fa-icon (click)=onStarClick() [icon]="isFavorite ? fasStar : farStar"></fa-icon>
+    <fa-icon (click)=onStarClick() [icon]="isSelected ? fasStar : farStar"></fa-icon>
   `
 })
 export class FavoriteComponent implements OnInit {
 
-  @Input('isFavorite') isFavorite: boolean;
+  @Input('isFavorite') isSelected: boolean;
   @Output() change = new EventEmitter();
 
   fasStar = fasStar;
@@ -19,8 +19,8 @@ export class FavoriteComponent implements OnInit {
   constructor() { }
 
   onStarClick() {
-    this.isFavorite = !this.isFavorite;
-    this.change.emit();
+    this.isSelected = !this.isSelected;
+    this.change.emit({ newValue: this.isSelected });
   }
 
   ngOnInit() {
