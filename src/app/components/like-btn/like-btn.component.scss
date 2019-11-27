@@ -2,18 +2,15 @@
 
     & > fa-icon {
         color: #ccc;
+        cursor: pointer;
     }
 
     &__counter {
         padding-left: 5px;
     }
 
-    &.active > fa-icon {
+    &.highlighted > fa-icon {
         color: deeppink;
-    }
-
-    &:hover > fa-icon {
-        cursor: pointer;
     }
 
 }

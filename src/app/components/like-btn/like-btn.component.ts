@@ -1,10 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'like-btn',
   template: `
-    <div class="like-btn" [class.active]="isActive" (click)="onBtnClick()">
+    <div class="like-btn" 
+      [class.highlighted]="isActive" 
+      (click)="onClick()"
+      >
       <fa-icon [icon]="faHeart"></fa-icon>
       <span class="like-btn__counter">{{ likesCount }}</span>
     </div>
@@ -16,19 +19,13 @@ export class LikeBtnComponent {
 
   @Input('isActive') isActive: boolean;
   @Input('likesCount') likesCount: number;
-  @Output ('changeOnClick') changeOnClick = new EventEmitter();
 
   faHeart = faHeart;
 
-  onBtnClick() {
+  onClick() {
 
     this.isActive = !this.isActive;
-    this.likesCount = this.isActive ? 1 : 0;
-
-    this.changeOnClick.emit({ 
-      newActiveValue: this.isActive,
-      newLikesCount: this.likesCount
-    });
+    this.likesCount += (this.isActive) ? +1 : -1;
 
   }
 

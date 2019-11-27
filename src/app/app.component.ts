@@ -10,18 +10,8 @@ export class AppComponent {
 
   tweet = {
     body: 'Here is the body of a tweet...',
-    isLiked: false,
-    likesCount: 0
-  }
-
-  post = {
-    title: "Title",
-    isFavorite: true
-  }
-
-  updateTweetObjectOnBtnClick(eventArgs){
-    this.tweet.isLiked = eventArgs.newActiveValue;
-    this.tweet.likesCount = eventArgs.newLikesCount;
+    isLiked: true,
+    likesCount: 10
   }
 
 }
