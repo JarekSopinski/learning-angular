@@ -1,0 +1,19 @@
+.like-btn{
+
+    & > fa-icon {
+        color: #ccc;
+    }
+
+    &__counter {
+        padding-left: 5px;
+    }
+
+    &.active > fa-icon {
+        color: deeppink;
+    }
+
+    &:hover > fa-icon {
+        cursor: pointer;
+    }
+
+}
