@@ -8,9 +8,6 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  task = {
-    title: 'Review applications',
-    assignee: null
-  }
+
 
 }

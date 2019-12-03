@@ -17,6 +17,7 @@ import { FavoriteComponent } from './components/favorite/favorite.component';
 import { MovieTitleComponent } from './components/movie-title/movie-title.component';
 import { PanelComponent } from './components/panel/panel.component';
 import { LikeBtnComponent } from './components/like-btn/like-btn.component';
+import { InputFormatDirective } from './directives/input-format.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LikeBtnComponent } from './components/like-btn/like-btn.component';
     FavoriteComponent,
     MovieTitleComponent,
     PanelComponent,
-    LikeBtnComponent
+    LikeBtnComponent,
+    InputFormatDirective
   ],
   imports: [
     BrowserModule,
