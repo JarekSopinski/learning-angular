@@ -1,0 +1,15 @@
+<ul>
+    <li 
+        *ngFor="let zippyItem of zippyItems; index as i"
+        (click)="onItemTopClick(i)"
+        class="zippy-item"
+        [class.opened]="i === openedItem"
+    >
+        <div class="zippy-item__top">
+            <h3>{{ zippyItem?.title }}</h3>
+        </div>
+        <div class="zippy-item__bottom">
+            <p>{{ zippyItem?.content }}</p>
+        </div>
+    </li>
+</ul>

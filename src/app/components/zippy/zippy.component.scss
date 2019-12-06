@@ -1,0 +1,28 @@
+.zippy-item {
+    display: block;
+    border: 1px solid grey;
+    
+    &:not(:last-child) {
+        border-bottom: none;
+    }
+
+    &__top, &__bottom {
+        padding: 20px;
+    }
+
+    &__top {
+        cursor: pointer;
+        transition: .5s;
+        &:hover { background-color: darkgrey; }
+    }
+
+    &__bottom {
+        display: none;
+        border-top: 1px solid grey;
+    }
+
+    &.opened &__bottom {
+        display: block;
+    }
+
+}

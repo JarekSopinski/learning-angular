@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-
+  items = [
+    { title: "Item1 title", content: "Item1 content" },
+    { title: "Item2 title", content: "Item2 content" },
+    { title: "Item3 title", content: "Item3 content" }
+  ]
 
 }

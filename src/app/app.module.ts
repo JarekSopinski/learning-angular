@@ -18,6 +18,7 @@ import { MovieTitleComponent } from './components/movie-title/movie-title.compon
 import { PanelComponent } from './components/panel/panel.component';
 import { LikeBtnComponent } from './components/like-btn/like-btn.component';
 import { InputFormatDirective } from './directives/input-format.directive';
+import { ZippyComponent } from './components/zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { InputFormatDirective } from './directives/input-format.directive';
     MovieTitleComponent,
     PanelComponent,
     LikeBtnComponent,
-    InputFormatDirective
+    InputFormatDirective,
+    ZippyComponent
   ],
   imports: [
     BrowserModule,
