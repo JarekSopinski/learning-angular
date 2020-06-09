@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CoursesService } from './services/courses.service';
 import { AuthorsService } from './services/authors.service';
@@ -24,6 +25,7 @@ import { CourseFormComponent } from './components/course-form/course-form.compon
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { NewCourseFormComponent } from './components/new-course-form/new-course-form.component';
 import { ChangePasswordFormComponent } from './components/change-password-form/change-password-form.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -42,14 +44,16 @@ import { ChangePasswordFormComponent } from './components/change-password-form/c
     CourseFormComponent,
     SignupFormComponent,
     NewCourseFormComponent,
-    ChangePasswordFormComponent
+    ChangePasswordFormComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     CoursesService,
