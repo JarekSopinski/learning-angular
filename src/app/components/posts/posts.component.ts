@@ -25,14 +25,20 @@ export class PostsComponent {
   createPost(input: HTMLInputElement) {
     let post:object = { title: input.value };
     input.value = '';
-
     this.http.post(this.url, JSON.stringify(post))
       .subscribe(response => {
         console.log(response);
         post['id'] = response['id'];
         this.posts.splice(0, 0, post);
       })
+  }
 
+  updatePost(post) {
+    const changedPostUrl:string = `${this.url}/${post.id}`;
+    this.http.patch(changedPostUrl, JSON.stringify({ isRead: true }))
+      .subscribe(response => {
+        console.log(response);
+      })
   }
 
 }
