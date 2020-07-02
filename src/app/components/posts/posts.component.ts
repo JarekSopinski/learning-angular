@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,13 +7,16 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./posts.component.scss']
 })
 
-export class PostsComponent {
+export class PostsComponent implements OnInit {
 
   posts:any[] = [];
   private url: string = 'https://jsonplaceholder.typicode.com/posts';
 
   constructor(private http: HttpClient){
-    http.get(this.url)
+  }
+
+  ngOnInit() {
+    this.http.get(this.url)
       .subscribe(response => {
         for (const property in response) {
           // temporary fix becuase tut is based on using array...
