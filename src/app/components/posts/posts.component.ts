@@ -30,16 +30,20 @@ export class PostsComponent implements OnInit {
   }
 
   createPost(input: HTMLInputElement) {
+    // optimistic approach: add post in browser without waiting for server response
     let post:object = { title: input.value };
-    input.value = '';
+    this.posts.splice(0, 0, post);
+
+    input.value = ''; // clear input
+
     this.service.create(post)
       .subscribe(
         createdPost => {
           console.log(createdPost);
           post['id'] = createdPost['id'];
-          this.posts.splice(0, 0, post);
         }, 
         (error: AppError) => {
+          this.posts.splice(0, 1); // in case of error, roll back from adding post
           if (error instanceof BadInput) {
             // this.form.setErrors(error.originalError);
           } else {
@@ -47,6 +51,7 @@ export class PostsComponent implements OnInit {
           }
         }
       )
+
   }
 
   updatePost(post) {
@@ -57,13 +62,15 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(post) {
+    // optimistic approach: remove post in browser without waiting for server response
+    let index = this.posts.indexOf(post);
+    this.posts.splice(index, 1);
+
     this.service.delete(post.id)
       .subscribe(
-        () => {
-          let index = this.posts.indexOf(post);
-          this.posts.splice(index, 1);
-      }, 
+        null, 
         (error: AppError) => { 
+          this.posts.splice(0, 0, post); // in case of server error, add removed post again
           if (error instanceof NotFoundError){
             alert('This post has already been deleted')
           } else {
