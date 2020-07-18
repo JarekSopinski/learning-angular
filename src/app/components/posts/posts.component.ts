@@ -20,23 +20,23 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.service.getAll()
       .subscribe(
-        response => {
-          for (const property in response) {
+        newPosts => {
+          for (const property in newPosts) {
             // temporary fix becuase tut is based on using array...
-            this.posts.push(response[property])
+            this.posts.push(newPosts[property])
           }
         }
       )
   }
 
-  create(input: HTMLInputElement) {
+  createPost(input: HTMLInputElement) {
     let post:object = { title: input.value };
     input.value = '';
     this.service.create(post)
       .subscribe(
-        response => {
-          console.log(response);
-          post['id'] = response['id'];
+        createdPost => {
+          console.log(createdPost);
+          post['id'] = createdPost['id'];
           this.posts.splice(0, 0, post);
         }, 
         (error: AppError) => {
@@ -49,24 +49,21 @@ export class PostsComponent implements OnInit {
       )
   }
 
-  update(post) {
+  updatePost(post) {
     this.service.update(post)
       .subscribe(
-        response => {
-          console.log(response);
-        }
+        updatedPost => console.log(updatedPost)
       )
   }
 
-  delete(post) {
+  deletePost(post) {
     this.service.delete(post.id)
       .subscribe(
-        response => {
-          console.log(response);
+        () => {
           let index = this.posts.indexOf(post);
           this.posts.splice(index, 1);
       }, 
-        (error: AppError) => {
+        (error: AppError) => { 
           if (error instanceof NotFoundError){
             alert('This post has already been deleted')
           } else {
