@@ -23,7 +23,7 @@ export class PostService {
     return this.http.patch(changedPostUrl, JSON.stringify({ isRead: true }));
   }
 
-  deletePost(id: string) {
+  deletePost(id: number) {
     const deletedPostUrl:string = `${this.url}/${id}`;
     return this.http.delete(deletedPostUrl);
   }
