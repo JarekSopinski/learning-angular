@@ -4,6 +4,8 @@ import { catchError, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AppError } from '../common/app-error';
 import { NotFoundError } from '../common/not-found-error';
+import { error } from 'protractor';
+import { BadInput } from '../common/bad-input';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,17 @@ export class PostService {
   }
 
   createPost(post: object) {
-    return this.http.post(this.url, JSON.stringify(post));
+    return this.http.post(this.url, JSON.stringify(post)).pipe(
+      map (data => {
+        return data;
+      }),
+      catchError((error: Response) => {
+        if (error.status === 400) {
+          return Observable.throw(new BadInput(error));
+        }
+        return Observable.throw(new AppError(error));
+      })
+    )
   }
 
   updatePost(post) {

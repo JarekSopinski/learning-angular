@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { AppError } from '../../common/app-error';
 import { NotFoundError } from 'src/app/common/not-found-error';
+import { BadInput } from 'src/app/common/bad-input';
 
 @Component({
   selector: 'posts',
@@ -42,9 +43,13 @@ export class PostsComponent implements OnInit {
           post['id'] = response['id'];
           this.posts.splice(0, 0, post);
         }, 
-        (error: Response) => {
-          alert ('An unexpected error occurred.');
-          console.log(error);
+        (error: AppError) => {
+          if (error instanceof BadInput) {
+            // this.form.setErrors(error.originalError);
+          } else {
+            alert ('An unexpected error occurred.');
+            console.log(error);
+          }
         }
       )
   }
