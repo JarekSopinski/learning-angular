@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'posts',
@@ -10,13 +10,12 @@ import { HttpClient } from '@angular/common/http';
 export class PostsComponent implements OnInit {
 
   posts:any[] = [];
-  private url: string = 'https://jsonplaceholder.typicode.com/posts';
 
-  constructor(private http: HttpClient){
+  constructor(private service: PostService){
   }
 
   ngOnInit() {
-    this.http.get(this.url)
+    this.service.getPosts()
       .subscribe(response => {
         for (const property in response) {
           // temporary fix becuase tut is based on using array...
@@ -28,7 +27,7 @@ export class PostsComponent implements OnInit {
   createPost(input: HTMLInputElement) {
     let post:object = { title: input.value };
     input.value = '';
-    this.http.post(this.url, JSON.stringify(post))
+    this.service.createPost(post)
       .subscribe(response => {
         console.log(response);
         post['id'] = response['id'];
@@ -37,16 +36,14 @@ export class PostsComponent implements OnInit {
   }
 
   updatePost(post) {
-    const changedPostUrl:string = `${this.url}/${post.id}`;
-    this.http.patch(changedPostUrl, JSON.stringify({ isRead: true }))
+    this.service.updatePost(post)
       .subscribe(response => {
         console.log(response);
       })
   }
 
   deletePost(post) {
-    const deletedPostUrl:string = `${this.url}/${post.id}`;
-    this.http.delete(deletedPostUrl)
+    this.service.deletePost(post.id)
       .subscribe(response => {
         console.log(response);
         let index = this.posts.indexOf(post);

@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CoursesService } from './services/courses.service';
 import { AuthorsService } from './services/authors.service';
+import { PostService } from './services/post.service';
 
 import { SummaryPipe } from './pipes/summary.pipe';
 import { FormatTitle } from './pipes/format-title.pipe';
@@ -57,7 +58,8 @@ import { PostsComponent } from './components/posts/posts.component';
   ],
   providers: [
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
