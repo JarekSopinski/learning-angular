@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 import { AppError } from '../common/app-error';
 import { NotFoundError } from '../common/not-found-error';
-import { error } from 'protractor';
 import { BadInput } from '../common/bad-input';
 
 @Injectable({
@@ -27,9 +26,9 @@ export class PostService {
       }),
       catchError((error: Response) => {
         if (error.status === 400) {
-          return Observable.throw(new BadInput(error));
+          return throwError(new BadInput(error));
         }
-        return Observable.throw(new AppError(error));
+        return throwError(new AppError(error));
       })
     )
   }
@@ -47,9 +46,9 @@ export class PostService {
       }),
       catchError((error: Response) => {
         if (error.status === 404){
-          return Observable.throw(new NotFoundError());
+          return throwError(new NotFoundError());
         }
-        return Observable.throw(new AppError(error));
+        return throwError(new AppError(error));
       })
     )
   }
