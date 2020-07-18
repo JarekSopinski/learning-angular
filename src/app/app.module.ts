@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -27,6 +27,7 @@ import { SignupFormComponent } from './components/signup-form/signup-form.compon
 import { NewCourseFormComponent } from './components/new-course-form/new-course-form.component';
 import { ChangePasswordFormComponent } from './components/change-password-form/change-password-form.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { AppErrorHandler } from './common/app-error-handler';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { PostsComponent } from './components/posts/posts.component';
   providers: [
     CoursesService,
     AuthorsService,
-    PostService
+    PostService,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

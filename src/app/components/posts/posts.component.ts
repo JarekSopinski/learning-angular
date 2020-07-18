@@ -25,10 +25,6 @@ export class PostsComponent implements OnInit {
             // temporary fix becuase tut is based on using array...
             this.posts.push(response[property])
           }
-        }, 
-        error => {
-          alert ('An unexpected error occurred.');
-          console.log(error);
         }
       )
   }
@@ -47,8 +43,7 @@ export class PostsComponent implements OnInit {
           if (error instanceof BadInput) {
             // this.form.setErrors(error.originalError);
           } else {
-            alert ('An unexpected error occurred.');
-            console.log(error);
+            throw error;
           }
         }
       )
@@ -59,14 +54,6 @@ export class PostsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-        }, 
-        (error: AppError) => {
-          if (error instanceof NotFoundError){
-            alert('Post not found')
-          } else {
-            alert ('An unexpected error occurred.');
-            console.log(error);
-          }
         }
       )
   }
@@ -83,8 +70,7 @@ export class PostsComponent implements OnInit {
           if (error instanceof NotFoundError){
             alert('This post has already been deleted')
           } else {
-            alert ('An unexpected error occurred.');
-            console.log(error);
+            throw error;
           }
         }
       )
