@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoursesService } from './services/courses.service';
 import { AuthorsService } from './services/authors.service';
 import { PostService } from './services/post.service';
+import { FollowersService } from './services/followers.service';
 
 import { SummaryPipe } from './pipes/summary.pipe';
 import { FormatTitle } from './pipes/format-title.pipe';
@@ -28,6 +29,7 @@ import { NewCourseFormComponent } from './components/new-course-form/new-course-
 import { ChangePasswordFormComponent } from './components/change-password-form/change-password-form.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { AppErrorHandler } from './common/app-error-handler';
+import { FollowersComponent } from './components/followers/followers.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { AppErrorHandler } from './common/app-error-handler';
     SignupFormComponent,
     NewCourseFormComponent,
     ChangePasswordFormComponent,
-    PostsComponent
+    PostsComponent,
+    FollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import { AppErrorHandler } from './common/app-error-handler';
     CoursesService,
     AuthorsService,
     PostService,
+    FollowersService,
     { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
