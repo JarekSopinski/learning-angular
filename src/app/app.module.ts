@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { CoursesService } from './services/courses.service';
 import { AuthorsService } from './services/authors.service';
@@ -30,6 +31,10 @@ import { ChangePasswordFormComponent } from './components/change-password-form/c
 import { PostsComponent } from './components/posts/posts.component';
 import { AppErrorHandler } from './common/app-error-handler';
 import { FollowersComponent } from './components/followers/followers.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { GithubProfileComponent } from './components/github-profile/github-profile.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,11 @@ import { FollowersComponent } from './components/followers/followers.component';
     NewCourseFormComponent,
     ChangePasswordFormComponent,
     PostsComponent,
-    FollowersComponent
+    FollowersComponent,
+    NavbarComponent,
+    HomeComponent,
+    GithubProfileComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
