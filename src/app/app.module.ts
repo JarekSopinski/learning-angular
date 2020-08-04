@@ -67,7 +67,29 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FormsModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { 
+        path: '', 
+        component: HomeComponent 
+      },
+      { 
+        path: 'followers/:username', 
+        component: GithubProfileComponent 
+      },
+      { 
+        path: 'followers', 
+        component: FollowersComponent 
+      },
+      { 
+        path: 'posts', 
+        component: PostsComponent
+      },
+      { 
+        path: '**', 
+        component: NotFoundComponent
+      }
+    ])
   ],
   providers: [
     CoursesService,
