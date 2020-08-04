@@ -10,13 +10,7 @@
             style="max-width: 50px; margin-right: 15px;"
         />
         <div>
-            <h3 *ngIf="follower.login">{{ follower.login }}</h3>
-            <a 
-                *ngIf="follower.html_url" 
-                [href]="follower.html_url" 
-                target="_blank">
-                {{ follower.html_url }}
-            </a>
+            <a [routerLink]="['/followers', follower.id]">{{ follower.login }}</a>
         </div>
     </li>
 </ul>
