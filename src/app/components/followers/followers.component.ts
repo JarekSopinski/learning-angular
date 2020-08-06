@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FollowersService } from '../../services/followers.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'followers',
@@ -10,9 +11,19 @@ export class FollowersComponent implements OnInit {
 
   followers:any[] = [];
 
-  constructor(private service: FollowersService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private service: FollowersService
+    ) { }
 
   ngOnInit() {
+
+    this.route.paramMap.subscribe();
+    this.route.snapshot.paramMap.get('id');
+
+    this.route.queryParamMap.subscribe();
+    this.route.snapshot.queryParamMap.get('page');
+
     this.service.getAll()
       .subscribe(
         newFollowers => {
@@ -21,6 +32,7 @@ export class FollowersComponent implements OnInit {
           }
         }
       )
+
   }
 
 }
