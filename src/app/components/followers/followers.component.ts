@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FollowersService } from '../../services/followers.service';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'followers',
@@ -22,18 +23,20 @@ export class FollowersComponent implements OnInit {
     combineLatest([
       this.route.paramMap,
       this.route.queryParamMap
-    ]).subscribe(combined => {
+    ])
 
-      let id = combined[0].get('id');
-      let page = combined[1].get('page');
+    .pipe(
+      switchMap(combined => {
+        let id = combined[0].get('id');
+        let page = combined[1].get('page');
+        return this.service.getAll();
+      })
+    )
 
-      this.service.getAll()
-      .subscribe( newFollowers => {
-          for (const property in newFollowers) {
-            this.followers.push(newFollowers[property]);
-          }
-        })
-
+    .subscribe( newFollowers => {
+      for (const property in newFollowers) {
+        this.followers.push(newFollowers[property]);
+      }
     })
 
   }
